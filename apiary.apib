@@ -1,0 +1,107 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# Pwr - Aplikacje mobilne
+# Rezerwacja sal squasha
+
+
+
+## All courts [/courts]
+
+### Get all courts [GET]
+
++ Response 200 (application/json)
+
+        {
+            "question": "What courts are available?",
+            "items": [
+                     {
+                        "courtID": 5,
+                        "facilityID": 5,
+                        "courtNumber": 5
+                    }, {
+                        "courtID": 6,
+                        "facilityID": 6,
+                        "courtNumber": 6
+                    }, {
+                        "courtID": 7,
+                        "facilityID": 7,
+                        "courtNumber": 7
+                    }, {
+                        "courtID": 8,
+                        "facilityID": 8,
+                        "courtNumber": 8
+                    }
+            ]
+        }
+
+### Create new court [POST]
+
++ Request (application/json)
+
+        {
+            "question": "What courts are available?",
+            "items": [
+                {
+                    "courtID": 4,
+                    "facilityID": 4,
+                    "courtNumber": 4
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /courts/4
+
+    + Body
+
+            {
+                "question": "What courts are available?",
+                "published_at": "2022-08-05T08:40:51.620Z",
+                "items": [
+                    {
+                        "courtID": 4,
+                        "facilityID": 4,
+                        "courtNumber": 4
+                    }
+                ]
+            }
+
+
+## Company [/company/ID]
+### Get company with specific ID [GET]
+
++ Request (application/json)
+
+        {
+            "question": "What courts are available?",
+            "item": 
+                {
+                    "companyID": 4
+                }
+        }
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /company/4
+    
+    + Body
+
+            {
+                "question": "What is company with that specific ID?",
+                "item":
+                    {
+                        "companyID": 4, 
+                        "companyName": "Sport System", 
+                        "companyNIP": 6462933516, 
+                        "city": "Wroclaw", 
+                        "street": "Bagienna", 
+                        "buildingNumber": "1", 
+                        "postalCode": "51-522", 
+                        "localNumber": "1"
+                    }
+            }
