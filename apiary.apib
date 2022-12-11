@@ -12,9 +12,7 @@ HOST: https://polls.apiblueprint.org/
 
 + Response 200 (application/json)
 
-        {
-            "question": "What courts are available?",
-            "items": [
+                [
                      {
                         "courtID": 5,
                         "facilityID": 5,
@@ -32,23 +30,19 @@ HOST: https://polls.apiblueprint.org/
                         "facilityID": 8,
                         "courtNumber": 8
                     }
-            ]
-        }
+                ]
+
 
 ### Create new court [POST]
 
 + Request (application/json)
 
-        {
-            "question": "What courts are available?",
-            "items": [
                 {
                     "courtID": 4,
                     "facilityID": 4,
                     "courtNumber": 4
                 }
-            ]
-        }
+
 
 + Response 201 (application/json)
 
@@ -58,17 +52,11 @@ HOST: https://polls.apiblueprint.org/
 
     + Body
 
-            {
-                "question": "What courts are available?",
-                "published_at": "2022-08-05T08:40:51.620Z",
-                "items": [
-                    {
-                        "courtID": 4,
-                        "facilityID": 4,
-                        "courtNumber": 4
-                    }
-                ]
-            }
+                {
+                    "courtID": 4,
+                    "facilityID": 4,
+                    "courtNumber": 4
+                }
 
 
 ## Company [/company/ID]
@@ -76,13 +64,11 @@ HOST: https://polls.apiblueprint.org/
 
 + Request (application/json)
 
-        {
-            "question": "What courts are available?",
-            "item": 
+
                 {
                     "companyID": 4
                 }
-        }
+
 + Response 200 (application/json)
 
     + Headers
@@ -91,17 +77,13 @@ HOST: https://polls.apiblueprint.org/
     
     + Body
 
-            {
-                "question": "What is company with that specific ID?",
-                "item":
-                    {
-                        "companyID": 4, 
-                        "companyName": "Sport System", 
-                        "companyNIP": 6462933516, 
-                        "city": "Wroclaw", 
-                        "street": "Bagienna", 
-                        "buildingNumber": "1", 
-                        "postalCode": "51-522", 
-                        "localNumber": "1"
-                    }
-            }
+                {
+                    "companyID": 4, 
+                    "companyName": "Sport System", 
+                    "companyNIP": 6462933516, 
+                    "city": "Wroclaw", 
+                    "street": "Bagienna", 
+                    "buildingNumber": "1", 
+                    "postalCode": "51-522", 
+                    "localNumber": "1"
+                }
