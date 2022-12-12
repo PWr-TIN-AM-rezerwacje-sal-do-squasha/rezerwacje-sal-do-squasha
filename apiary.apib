@@ -54,16 +54,59 @@ HOST: https://polls.apiblueprint.org/
             }
 
 
-## Company [/company/{id}]
-### Get company with specific ID [GET]
+## Company [/company]
 
-+ Parameters
+### List all companies [GET]
 
-    + id: 4 (number) - An unique identifier company
-    
 + Response 200 (application/json)
 
-    + Body
+        [
+            {
+                "companyID": 4, 
+                "companyName": "Sport System", 
+                "companyNIP": 6462933516, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "1", 
+                "postalCode": "51-522", 
+                "localNumber": "1"
+            },
+            {
+                "companyID": 5, 
+                "companyName": "Sport", 
+                "companyNIP": 9874654321, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "2", 
+                "postalCode": "51-522", 
+                "localNumber": "3"
+            }
+        ]
+        
+
+### Add new company [PUT /company]
+
++ Request (application/json)
+
+            {
+                "companyName": "Sport System", 
+                "companyNIP": 6462933516, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "1", 
+                "postalCode": "51-522", 
+                "localNumber": "1"
+            }
+
++ Response 204
+
+
+### Get all info of company [GET /company/{id}]
+
++ Parameters
+    + id: 4 (number) - An unique identifier company
+
++ Response 200 (application/json)
 
             {
                 "companyID": 4, 
@@ -75,15 +118,131 @@ HOST: https://polls.apiblueprint.org/
                 "postalCode": "51-522", 
                 "localNumber": "1"
             }
-     
             
-# Group Users
+### Get name of company [GET /company/name/{id}]
 
-## Users [/users/{id}]
-### Get user with specific ID [GET]
++ Parameters
+    + id: 4 (number) - An unique identifier company
+
++ Response 200 (application/json)
+
+            {
+                "companyID": 4, 
+                "companyName": "Sport System"
+            }
+
+
+### Update company [PUT /company/{id}]
+
++ Parameters
+    + id: 4 (number) - An unique identifier company
+
++ Request (application/json)
+
+            {
+                "companyID": 4, 
+                "companyName": "Sport System", 
+                "companyNIP": 6462933516, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "1", 
+                "postalCode": "51-522", 
+                "localNumber": "1"
+            }
+
++ Response 204
+
+
+### Delete company [DELETE /company/{id}]
+
++ Parameters
+    + id: 4 (number) - An unique identifier company
+
++ Response 204
+
+
+
+## Users [/users]
+### All Users [GET /users/{?limit}]
+A resource representing all of users in the system, limited by param *limit* (optional). Response is without user's password
 
 + Parameters
 
+    + limit (number, optional) - The maximum number of results to return.
+        + Default: `20`
+
++ Response 200 (application/json)
+
+        [
+            {
+                "userID": 4, 
+                "userName": "Jan", 
+                "userSurname": "Kowalski", 
+                "userEmail": "a@a.com", 
+                "userBirthDate": "12-04-2005", 
+                "userPhoneNumber": "123345789"
+            },
+            {
+                "userID": 5, 
+                "userName": "Marcin", 
+                "userSurname": "Nowak", 
+                "userEmail": "aaa@a.com", 
+                "userBirthDate": "16-12-2005", 
+                "userPhoneNumber": "879546123"
+            },
+            {
+                "userID": 6, 
+                "userName": "Piotr", 
+                "userSurname": "Zbyniecki", 
+                "userEmail": "asd@a.com", 
+                "userBirthDate": "12-04-2003", 
+                "userPhoneNumber": "987459385"
+            }
+        ]
+
+
+### Check user password [POST /users]
+
++ Request (application/json)
+
+            {
+                "userPassword": "sadfuh3iHSIFHASUIDFHiohiudsgu", 
+                "userEmail": "a@a.com", 
+            }
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {    
+                "data":    
+                        {
+                            "userID": 4, 
+                            "userName": "Jan", 
+                            "userSurname": "Kowalski"
+                        },
+                "status":"OK. Email and password correct"
+            }
+            
++ Response 201 (application/json)
+
+    + Body
+
+            {    
+                "data":    
+                        {
+                            "userID": , 
+                            "userName": "", 
+                            "userSurname": ""
+                        },
+                "status":"Error. Email or password incorrect"
+            }
+            
+                    
+### Get user with specific ID [GET /users/{id}]
+
++ Parameters
     + id: 4 (number) - An unique identifier of user
 
 + Response 200 (application/json)
@@ -99,54 +258,24 @@ HOST: https://polls.apiblueprint.org/
                 "userBirthDate": "12-04-2005", 
                 "userPhoneNumber": "123345789"
             }
-
-
-## All Users [/users/{?limit}]
-A resource representing all of users in the system.
-
-We have added the query URI template parameter - `limit`. This parameter is
-used for limiting the number of results returned by some actions on this
-resource. It does not affect every possible action of this resource, therefore
-we will discuss it only at the particular action level below.
-
-### Retrieve all Messages [GET]
+            
+### Get user name nad surname by ID [GET /users/name/{id}]
 
 + Parameters
-
-    + limit (number, optional) - The maximum number of results to return.
-        + Default: `20`
+    + id: 4 (number) - An unique identifier of user
 
 + Response 200 (application/json)
 
-        [
+    + Body
+
             {
                 "userID": 4, 
                 "userName": "Jan", 
-                "userSurname": "Kowalski", 
-                "userPassword": "sadfuh3iHSIFHASUIDFHiohiudsgu", 
-                "userEmail": "a@a.com", 
-                "userBirthDate": "12-04-2005", 
-                "userPhoneNumber": "123345789"
-            },
-            {
-                "userID": 5, 
-                "userName": "Marcin", 
-                "userSurname": "Nowak", 
-                "userPassword": "asdmiu3asdbaj", 
-                "userEmail": "aaa@a.com", 
-                "userBirthDate": "16-12-2005", 
-                "userPhoneNumber": "879546123"
-            },
-            {
-                "userID": 6, 
-                "userName": "Piotr", 
-                "userSurname": "Zbyniecki", 
-                "userPassword": "ou98gbhi3", 
-                "userEmail": "asd@a.com", 
-                "userBirthDate": "12-04-2003", 
-                "userPhoneNumber": "987459385"
+                "userSurname": "Kowalski"
             }
-        ]
+
+
+
 
 #Group Player
 
