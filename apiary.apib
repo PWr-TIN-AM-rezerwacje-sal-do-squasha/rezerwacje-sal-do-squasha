@@ -218,3 +218,91 @@ we will discuss it only at the particular action level below.
                 "reservationID": 14, 
                 "IsCreator": [true],
             }
+
+#Group Facility
+
+## All Facility [/facility]
+A resource representing all of facilities in the system.
+### Get all facility [GET]
+
++ Response 200 (application/json)
+
+        [
+             {
+                "facilityID": 20, 
+                "courtID": 30, 
+                "companyID": 14, 
+                "facilityName": "OSIR",
+                "city": "Wrocław",
+                "street": "Długa",
+                "buildingNumber": "22a",
+                "localNumber":" ",
+                "postalCode":"55-158",
+                "openingTime":"01:59:59.9999999",
+                "closingTime":"23:59:59.9999999",
+                "houerlyPrice": 50,
+            }
+
+## Facility [/facility/{id}]
+### Get facility with specific ID [GET]
++ Parameters
+
+    + id: 20 (number) - An unique identifier of facility
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+               "facilityID": 20, 
+                "courtID": 30, 
+                "companyID": 14, 
+                "facilityName": "OSIR",
+                "city": "Wrocław",
+                "street": "Długa",
+                "buildingNumber": "22a",
+                "localNumber":" ",
+                "postalCode":"55-158",
+                "openingTime":"01:59:59.9999999",
+                "closingTime":"23:59:59.9999999",
+                "houerlyPrice": 50,
+            }
+
+### Create new facility [POST]
+
++ Request (application/json)
+
+            {
+               "facilityID": 20, 
+                "courtID": 30, 
+                "companyID": 14, 
+                "facilityName": "OSIR",
+                "city": "Wrocław",
+                "street": "Długa",
+                "buildingNumber": "22a",
+                "localNumber":" ",
+                "postalCode":"55-158",
+                "openingTime":"01:59:59.9999999",
+                "closingTime":"23:59:59.9999999",
+                "houerlyPrice": 50,
+                
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+               "facilityID": 20, 
+                "courtID": 30, 
+                "companyID": 14, 
+                "facilityName": "OSIR",
+                "city": "Wrocław",
+                "street": "Długa",
+                "buildingNumber": "22a",
+                "localNumber":" ",
+                "postalCode":"55-158",
+                "openingTime":"01:59:59.9999999",
+                "closingTime":"23:59:59.9999999",
+                "houerlyPrice": 50,
+            }
