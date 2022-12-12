@@ -54,10 +54,62 @@ HOST: https://polls.apiblueprint.org/
             }
 
 
+## Company [/company/{id}]
+### Get company with specific ID [GET]
 
-## Users [/users]
-### All Users [GET /users/{?limit}]
-A resource representing all of users in the system, limited by param *limit* (optional). Response is without user's password
++ Parameters
+
+    + id: 4 (number) - An unique identifier company
+    
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "companyID": 4, 
+                "companyName": "Sport System", 
+                "companyNIP": 6462933516, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "1", 
+                "postalCode": "51-522", 
+                "localNumber": "1"
+            }
+     
+            
+# Group Users
+
+## Users [/users/{id}]
+### Get user with specific ID [GET]
+
++ Parameters
+
+    + id: 4 (number) - An unique identifier of user
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "userID": 4, 
+                "userName": "Jan", 
+                "userSurname": "Kowalski", 
+                "userPassword": "sadfuh3iHSIFHASUIDFHiohiudsgu", 
+                "userEmail": "a@a.com", 
+                "userBirthDate": "12-04-2005", 
+                "userPhoneNumber": "123345789"
+            }
+
+
+## All Users [/users/{?limit}]
+A resource representing all of users in the system.
+
+We have added the query URI template parameter - `limit`. This parameter is
+used for limiting the number of results returned by some actions on this
+resource. It does not affect every possible action of this resource, therefore
+we will discuss it only at the particular action level below.
+
+### Retrieve all Messages [GET]
 
 + Parameters
 
@@ -71,6 +123,7 @@ A resource representing all of users in the system, limited by param *limit* (op
                 "userID": 4, 
                 "userName": "Jan", 
                 "userSurname": "Kowalski", 
+                "userPassword": "sadfuh3iHSIFHASUIDFHiohiudsgu", 
                 "userEmail": "a@a.com", 
                 "userBirthDate": "12-04-2005", 
                 "userPhoneNumber": "123345789"
@@ -79,6 +132,7 @@ A resource representing all of users in the system, limited by param *limit* (op
                 "userID": 5, 
                 "userName": "Marcin", 
                 "userSurname": "Nowak", 
+                "userPassword": "asdmiu3asdbaj", 
                 "userEmail": "aaa@a.com", 
                 "userBirthDate": "16-12-2005", 
                 "userPhoneNumber": "879546123"
@@ -87,189 +141,80 @@ A resource representing all of users in the system, limited by param *limit* (op
                 "userID": 6, 
                 "userName": "Piotr", 
                 "userSurname": "Zbyniecki", 
+                "userPassword": "ou98gbhi3", 
                 "userEmail": "asd@a.com", 
                 "userBirthDate": "12-04-2003", 
                 "userPhoneNumber": "987459385"
             }
         ]
 
+#Group Player
 
-### Check user password [POST /users]
-
-+ Request (application/json)
-
-            {
-                "userPassword": "sadfuh3iHSIFHASUIDFHiohiudsgu", 
-                "userEmail": "a@a.com", 
-            }
-
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {    
-                "data":    
-                        {
-                            "userID": 4, 
-                            "userName": "Jan", 
-                            "userSurname": "Kowalski"
-                        },
-                "status":"OK. Email and password correct"
-            }
-            
-+ Response 201 (application/json)
-
-    + Body
-
-            {    
-                "data":    
-                        {
-                            "userID": , 
-                            "userName": "", 
-                            "userSurname": ""
-                        },
-                "status":"Error. Email or password incorrect"
-            }
-            
-                    
-### Get user with specific ID [GET /users/{id}]
-
+## Player [/player/{id}]
+### Get player with specific ID [GET]
 + Parameters
-    + id: 4 (number) - An unique identifier of user
+
+    + id: 5 (number) - An unique identifier of player
 
 + Response 200 (application/json)
 
     + Body
 
             {
-                "userID": 4, 
-                "userName": "Jan", 
-                "userSurname": "Kowalski", 
-                "userPassword": "sadfuh3iHSIFHASUIDFHiohiudsgu", 
-                "userEmail": "a@a.com", 
-                "userBirthDate": "12-04-2005", 
-                "userPhoneNumber": "123345789"
+                "additionalPlayerID": 5, 
+                "UserID": 6, 
+                "reservationID": 10, 
+                "IsCreator": [true], 
             }
-            
-### Get user name nad surname by ID [GET /users/name/{id}]
+## All Player [/player]
 
-+ Parameters
-    + id: 4 (number) - An unique identifier of user
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "userID": 4, 
-                "userName": "Jan", 
-                "userSurname": "Kowalski"
-            }
-
-            
-## Company [/company]
-
-### List all companies [GET]
+### Get all player [GET]
 
 + Response 200 (application/json)
 
         [
-            {
-                "companyID": 4, 
-                "companyName": "Sport System", 
-                "companyNIP": 6462933516, 
-                "city": "Wroclaw", 
-                "street": "Bagienna", 
-                "buildingNumber": "1", 
-                "postalCode": "51-522", 
-                "localNumber": "1"
-            },
-            {
-                "companyID": 5, 
-                "companyName": "Sport", 
-                "companyNIP": 9874654321, 
-                "city": "Wroclaw", 
-                "street": "Bagienna", 
-                "buildingNumber": "2", 
-                "postalCode": "51-522", 
-                "localNumber": "3"
+             {
+                "additionalPlayerID": 5, 
+                "UserID": 6, 
+                "reservationID": 10, 
+                "IsCreator": [true],
+            }, {
+                "additionalPlayerID": 7, 
+                "UserID": 10, 
+                "reservationID": 11, 
+                "IsCreator": [false],
+            }, {
+                "additionalPlayerID": 9, 
+                "UserID": 15, 
+                "reservationID": 12, 
+                "IsCreator": [true],
+            }, {
+                "additionalPlayerID": 11, 
+                "UserID": 17, 
+                "reservationID": 13, 
+                "IsCreator": [true],
             }
         ]
-        
-
-### Add new company [PUT /company]
-
-+ Request (application/json)
-
-            {
-                "companyName": "Sport System", 
-                "companyNIP": 6462933516, 
-                "city": "Wroclaw", 
-                "street": "Bagienna", 
-                "buildingNumber": "1", 
-                "postalCode": "51-522", 
-                "localNumber": "1"
-            }
-
-+ Response 204
 
 
-### Get all info of company [GET /company/{id}]
-
-+ Parameters
-    + id: 4 (number) - An unique identifier company
-
-+ Response 200 (application/json)
-
-            {
-                "companyID": 4, 
-                "companyName": "Sport System", 
-                "companyNIP": 6462933516, 
-                "city": "Wroclaw", 
-                "street": "Bagienna", 
-                "buildingNumber": "1", 
-                "postalCode": "51-522", 
-                "localNumber": "1"
-            }
-            
-### Get name of company [GET /company/name/{id}]
-
-+ Parameters
-    + id: 4 (number) - An unique identifier company
-
-+ Response 200 (application/json)
-
-            {
-                "companyID": 4, 
-                "companyName": "Sport System"
-            }
-
-
-### Update company [PUT /company/{id}]
-
-+ Parameters
-    + id: 4 (number) - An unique identifier company
+### Create new player [POST]
 
 + Request (application/json)
 
             {
-                "companyID": 4, 
-                "companyName": "Sport System", 
-                "companyNIP": 6462933516, 
-                "city": "Wroclaw", 
-                "street": "Bagienna", 
-                "buildingNumber": "1", 
-                "postalCode": "51-522", 
-                "localNumber": "1"
+               "additionalPlayerID": 20, 
+                "UserID": 30, 
+                "reservationID": 14, 
+                "IsCreator": [true],
             }
 
-+ Response 204
++ Response 201 (application/json)
 
+    + Body
 
-### Delete company [DELETE /company/{id}]
-
-+ Parameters
-    + id: 4 (number) - An unique identifier company
-
-+ Response 204
+            {
+               "additionalPlayerID": 20, 
+                "UserID": 30, 
+                "reservationID": 14, 
+                "IsCreator": [true],
+            }
