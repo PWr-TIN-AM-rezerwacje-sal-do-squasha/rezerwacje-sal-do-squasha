@@ -12,78 +12,224 @@ HOST: https://polls.apiblueprint.org/
 
 + Response 200 (application/json)
 
-                [
-                     {
-                        "courtID": 5,
-                        "facilityID": 5,
-                        "courtNumber": 5
-                    }, {
-                        "courtID": 6,
-                        "facilityID": 6,
-                        "courtNumber": 6
-                    }, {
-                        "courtID": 7,
-                        "facilityID": 7,
-                        "courtNumber": 7
-                    }, {
-                        "courtID": 8,
-                        "facilityID": 8,
-                        "courtNumber": 8
-                    }
-                ]
+        [
+             {
+                "courtID": 5,
+                "facilityID": 5,
+                "courtNumber": 5
+            }, {
+                "courtID": 6,
+                "facilityID": 6,
+                "courtNumber": 6
+            }, {
+                "courtID": 7,
+                "facilityID": 7,
+                "courtNumber": 7
+            }, {
+                "courtID": 8,
+                "facilityID": 8,
+                "courtNumber": 8
+            }
+        ]
 
 
 ### Create new court [POST]
 
 + Request (application/json)
 
-                {
-                    "courtID": 4,
-                    "facilityID": 4,
-                    "courtNumber": 4
-                }
-
+            {
+                "courtID": 4,
+                "facilityID": 4,
+                "courtNumber": 4
+            }
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Location: /courts/4
-
     + Body
 
-                {
-                    "courtID": 4,
-                    "facilityID": 4,
-                    "courtNumber": 4
-                }
+            {
+                "courtID": 4,
+                "facilityID": 4,
+                "courtNumber": 4
+            }
 
 
-## Company [/company/ID]
-### Get company with specific ID [GET]
+            
+# Group Users
 
-+ Request (application/json)
+## Users [/users/{id}]
+### Get user with specific ID [GET]
 
++ Parameters
 
-                {
-                    "companyID": 4
-                }
+    + id: 4 (number) - An unique identifier of user
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Location: /company/4
-    
     + Body
 
-                {
-                    "companyID": 4, 
-                    "companyName": "Sport System", 
-                    "companyNIP": 6462933516, 
-                    "city": "Wroclaw", 
-                    "street": "Bagienna", 
-                    "buildingNumber": "1", 
-                    "postalCode": "51-522", 
-                    "localNumber": "1"
-                }
+            {
+                "userID": 4, 
+                "userName": "Jan", 
+                "userSurname": "Kowalski", 
+                "userPassword": "sadfuh3iHSIFHASUIDFHiohiudsgu", 
+                "userEmail": "a@a.com", 
+                "userBirthDate": "12-04-2005", 
+                "userPhoneNumber": "123345789"
+            }
+
+
+## All Users [/users/{?limit}]
+A resource representing all of users in the system.
+
+We have added the query URI template parameter - `limit`. This parameter is
+used for limiting the number of results returned by some actions on this
+resource. It does not affect every possible action of this resource, therefore
+we will discuss it only at the particular action level below.
+
+### Retrieve all Messages [GET]
+
++ Parameters
+
+    + limit (number, optional) - The maximum number of results to return.
+        + Default: `20`
+
++ Response 200 (application/json)
+
+        [
+            {
+                "userID": 4, 
+                "userName": "Jan", 
+                "userSurname": "Kowalski", 
+                "userPassword": "sadfuh3iHSIFHASUIDFHiohiudsgu", 
+                "userEmail": "a@a.com", 
+                "userBirthDate": "12-04-2005", 
+                "userPhoneNumber": "123345789"
+            },
+            {
+                "userID": 5, 
+                "userName": "Marcin", 
+                "userSurname": "Nowak", 
+                "userPassword": "asdmiu3asdbaj", 
+                "userEmail": "aaa@a.com", 
+                "userBirthDate": "16-12-2005", 
+                "userPhoneNumber": "879546123"
+            },
+            {
+                "userID": 6, 
+                "userName": "Piotr", 
+                "userSurname": "Zbyniecki", 
+                "userPassword": "ou98gbhi3", 
+                "userEmail": "asd@a.com", 
+                "userBirthDate": "12-04-2003", 
+                "userPhoneNumber": "987459385"
+            }
+        ]
+            
+            
+
+## Company [/company]
+
+### List all companies [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "companyID": 4, 
+                "companyName": "Sport System", 
+                "companyNIP": 6462933516, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "1", 
+                "postalCode": "51-522", 
+                "localNumber": "1"
+            },
+            {
+                "companyID": 5, 
+                "companyName": "Sport", 
+                "companyNIP": 9874654321, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "2", 
+                "postalCode": "51-522", 
+                "localNumber": "3"
+            }
+        ]
+        
+
+### Add new company [PUT /company]
+
++ Request (application/json)
+
+            {
+                "companyName": "Sport System", 
+                "companyNIP": 6462933516, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "1", 
+                "postalCode": "51-522", 
+                "localNumber": "1"
+            }
+
++ Response 204
+
+
+### Get all info of company [GET /company/{id}]
+
++ Parameters
+    + id: 4 (number) - An unique identifier company
+
++ Response 200 (application/json)
+
+            {
+                "companyID": 4, 
+                "companyName": "Sport System", 
+                "companyNIP": 6462933516, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "1", 
+                "postalCode": "51-522", 
+                "localNumber": "1"
+            }
+            
+### Get name of company [GET /company/name/{id}]
+
++ Parameters
+    + id: 4 (number) - An unique identifier company
+
++ Response 200 (application/json)
+
+            {
+                "companyID": 4, 
+                "companyName": "Sport System"
+            }
+
+
+### Update company [PUT /company/{id}]
+
++ Parameters
+    + id: 4 (number) - An unique identifier company
+
++ Request (application/json)
+
+            {
+                "companyID": 4, 
+                "companyName": "Sport System", 
+                "companyNIP": 6462933516, 
+                "city": "Wroclaw", 
+                "street": "Bagienna", 
+                "buildingNumber": "1", 
+                "postalCode": "51-522", 
+                "localNumber": "1"
+            }
+
++ Response 204
+
+
+### Delete company [DELETE /company/{id}]
+
++ Parameters
+    + id: 4 (number) - An unique identifier company
+
++ Response 204
