@@ -277,10 +277,9 @@ A resource representing all of users in the system, limited by param *limit* (op
 
 
 
-#Group Player
 
-## Player [/player/{id}]
-### Get player with specific ID [GET]
+## Player [/player]
+### Get player with specific ID [GET /player/{id}]
 + Parameters
 
     + id: 5 (number) - An unique identifier of player
@@ -295,9 +294,8 @@ A resource representing all of users in the system, limited by param *limit* (op
                 "reservationID": 10, 
                 "IsCreator": [true], 
             }
-## All Player [/player]
 
-### Get all player [GET]
+### Get all player [GET /player/all]
 
 + Response 200 (application/json)
 
@@ -326,7 +324,7 @@ A resource representing all of users in the system, limited by param *limit* (op
         ]
 
 
-### Create new player [POST]
+### Create new player [POST /player/create]
 
 + Request (application/json)
 
