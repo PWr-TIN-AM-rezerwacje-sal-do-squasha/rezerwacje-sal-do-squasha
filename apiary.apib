@@ -346,6 +346,30 @@ A resource representing all of users in the system, limited by param *limit* (op
                 "IsCreator": [true],
             }
 
+### Update player [PUT /player/{id}]
+
++ Parameters
+    + id: 4 (number) - An unique identifier player
+
++ Request (application/json)
+
+            {
+                "additionalPlayerID": 20, 
+                "UserID": 30, 
+                "reservationID": 14, 
+                "IsCreator": [true],
+            }
+
++ Response 204
+
+
+### Delete player [DELETE /player/{id}]
+
++ Parameters
+    + id: 20 (number) - An unique identifier player
+
++ Response 204
+
 #Group Facility
 
 ## All Facility [/facility]
