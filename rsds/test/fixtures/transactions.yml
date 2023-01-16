@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction: 2023-01-16 22:45:24
+  value: 1
+
+two:
+  transaction: 2023-01-16 22:45:24
+  value: 1
