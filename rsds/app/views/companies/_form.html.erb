@@ -1,0 +1,57 @@
+<%= form_with(model: company) do |form| %>
+  <% if company.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+        <% company.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :companyID, style: "display: block" %>
+    <%= form.number_field :companyID %>
+  </div>
+
+  <div>
+    <%= form.label :companyName, style: "display: block" %>
+    <%= form.text_field :companyName %>
+  </div>
+
+  <div>
+    <%= form.label :companyNIP, style: "display: block" %>
+    <%= form.number_field :companyNIP %>
+  </div>
+
+  <div>
+    <%= form.label :city, style: "display: block" %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div>
+    <%= form.label :street, style: "display: block" %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div>
+    <%= form.label :buildingNumber, style: "display: block" %>
+    <%= form.number_field :buildingNumber %>
+  </div>
+
+  <div>
+    <%= form.label :localNumber, style: "display: block" %>
+    <%= form.text_field :localNumber %>
+  </div>
+
+  <div>
+    <%= form.label :postalCode, style: "display: block" %>
+    <%= form.text_field :postalCode %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
