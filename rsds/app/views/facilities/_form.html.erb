@@ -1,0 +1,67 @@
+<%= form_with(model: facility) do |form| %>
+  <% if facility.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(facility.errors.count, "error") %> prohibited this facility from being saved:</h2>
+
+      <ul>
+        <% facility.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :companyID_id, style: "display: block" %>
+    <%= form.text_field :companyID_id %>
+  </div>
+
+  <div>
+    <%= form.label :facilityName, style: "display: block" %>
+    <%= form.text_field :facilityName %>
+  </div>
+
+  <div>
+    <%= form.label :city, style: "display: block" %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div>
+    <%= form.label :street, style: "display: block" %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div>
+    <%= form.label :buildingNumber, style: "display: block" %>
+    <%= form.text_field :buildingNumber %>
+  </div>
+
+  <div>
+    <%= form.label :localNumber, style: "display: block" %>
+    <%= form.text_field :localNumber %>
+  </div>
+
+  <div>
+    <%= form.label :postalCode, style: "display: block" %>
+    <%= form.text_field :postalCode %>
+  </div>
+
+  <div>
+    <%= form.label :openingTime, style: "display: block" %>
+    <%= form.time_field :openingTime %>
+  </div>
+
+  <div>
+    <%= form.label :closingTime, style: "display: block" %>
+    <%= form.time_field :closingTime %>
+  </div>
+
+  <div>
+    <%= form.label :houerlyPrice, style: "display: block" %>
+    <%= form.number_field :houerlyPrice %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,9 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_231403) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_114644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.integer "companyID"
+    t.string "companyName"
+    t.integer "companyNIP"
+    t.string "city"
+    t.string "street"
+    t.integer "buildingNumber"
+    t.string "localNumber"
+    t.string "postalCode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "facilities", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "facilityName"
+    t.string "city"
+    t.string "street"
+    t.string "buildingNumber"
+    t.string "localNumber"
+    t.string "postalCode"
+    t.time "openingTime"
+    t.time "closingTime"
+    t.integer "houerlyPrice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_facilities_on_company_id"
+  end
 
   create_table "player", id: false, force: :cascade do |t|
     t.bigint "users_id"
@@ -50,4 +79,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_231403) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "facilities", "companies"
 end

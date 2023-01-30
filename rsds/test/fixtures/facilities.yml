@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  companyID: one
+  facilityName: MyString
+  city: MyString
+  street: MyString
+  buildingNumber: MyString
+  localNumber: MyString
+  postalCode: MyString
+  openingTime: 2023-01-30 12:46:45
+  closingTime: 2023-01-30 12:46:45
+  houerlyPrice: 1
+
+two:
+  companyID: two
+  facilityName: MyString
+  city: MyString
+  street: MyString
+  buildingNumber: MyString
+  localNumber: MyString
+  postalCode: MyString
+  openingTime: 2023-01-30 12:46:45
+  closingTime: 2023-01-30 12:46:45
+  houerlyPrice: 1
