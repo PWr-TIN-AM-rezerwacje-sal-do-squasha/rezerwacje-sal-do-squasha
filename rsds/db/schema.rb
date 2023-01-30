@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_30_114644) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_130333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
-    t.integer "companyID"
     t.string "companyName"
     t.integer "companyNIP"
     t.string "city"
@@ -23,6 +22,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_114644) do
     t.integer "buildingNumber"
     t.string "localNumber"
     t.string "postalCode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courts", force: :cascade do |t|
+    t.string "courtNumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,7 +56,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_114644) do
     t.index ["users_id"], name: "index_player_on_users_id"
   end
 
+  create_table "players", force: :cascade do |t|
+    t.boolean "isCreator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reservations", force: :cascade do |t|
+    t.bigint "court_id"
     t.boolean "lookingForPlayer"
     t.datetime "reservationDate"
     t.datetime "reservationStartTime"
@@ -59,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_114644) do
     t.integer "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["court_id"], name: "index_reservations_on_court_id"
   end
 
   create_table "transactions", force: :cascade do |t|
