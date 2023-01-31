@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-
+    
     validates :companyName, presence: true, uniqueness: false, length: { in: 3..50 }, format: { with: /\A[A-Za-z]+(?: [a-zA-Z]+)*\z/, message: "must start with capital letter, letters only" }
     validates :city, presence: true, uniqueness: false, length: { in: 3..50 }, format: { with: /\A[A-Za-z]+(?: [a-zA-Z]+)*\z/, message: "only letters and spaces" }
     validates :street, presence: true, uniqueness: false, length: { in: 3..50 }, format: { with: /\A[0-9A-Za-z]+(?: [0-9a-zA-Z]+)*\z/, message: "only letters, digits and spaces" }
