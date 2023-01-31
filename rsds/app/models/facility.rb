@@ -1,5 +1,5 @@
 class Facility < ApplicationRecord
-  belongs_to :company
+  # belongs_to :company
   has_many :courts
 
   validates :facilityName, presence: true, uniqueness: false, length: { in: 3..50 }, format: { with: /\A[A-Za-z]+(?: [a-zA-Z]+)*\z/, message: "must start with capital letter, letters only" }

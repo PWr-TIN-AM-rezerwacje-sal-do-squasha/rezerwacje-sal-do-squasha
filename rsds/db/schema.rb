@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_160721) do
   end
 
   create_table "facilities", force: :cascade do |t|
-    t.bigint "company_id", null: false
+    t.bigint "company_id"
     t.string "facilityName"
     t.string "city"
     t.string "street"
@@ -84,7 +84,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_160721) do
   create_table "users", force: :cascade do |t|
     t.string "userName"
     t.string "userSurname"
-    t.string "userPassword"
     t.string "userEmail"
     t.date "userBirthDate"
     t.string "userPhoneNumber"
@@ -93,5 +92,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_160721) do
     t.string "password_digest"
   end
 
-  add_foreign_key "facilities", "companies"
 end
