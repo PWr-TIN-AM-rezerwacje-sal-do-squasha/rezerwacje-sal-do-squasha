@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-    belongs_to :court
+    # belongs_to :court
     has_many :transactions
     has_many :players
     has_many :users, through: :players
